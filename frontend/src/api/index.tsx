@@ -49,7 +49,6 @@ export const useRegister = async (
 		throw new Error(errorData.detail || 'Registration failed')
 	}
 }
-
 export const useVerifyToken = async (token: string): Promise<void> => {
 	const response = await fetch(`http://127.0.0.1:8000/verify-token/${token}`)
 	if (!response.ok) {
