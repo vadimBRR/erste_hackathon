@@ -20,7 +20,7 @@ export const useLogin = async (
 	formDetails.append('username', username)
 	formDetails.append('password', password)
 
-	const response = await fetch('http://127.0.0.1:8000/token', {
+	const response = await fetch('/api/token', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 		body: formDetails,
@@ -38,7 +38,7 @@ export const useRegister = async (
 	username: string,
 	password: string
 ): Promise<void> => {
-	const response = await fetch('http://127.0.0.1:8000/register', {
+	const response = await fetch('/api/register', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ username, password }),
@@ -50,14 +50,14 @@ export const useRegister = async (
 	}
 }
 export const useVerifyToken = async (token: string): Promise<void> => {
-	const response = await fetch(`http://127.0.0.1:8000/verify-token/${token}`)
+	const response = await fetch(`/api/verify-token/${token}`)
 	if (!response.ok) {
 		throw new Error('Token verification failed')
 	}
 }
 
 export const useGetUser = async (token: string): Promise<void> => {
-  const response = await fetch(`http://127.0.0.1:8000/me`, {
+  const response = await fetch(`/api/me`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -78,7 +78,7 @@ export const usePredictTotalPrice = () => {
     price: number,
     vat_rate: number
   ): Promise<PredictionResponse> => {
-    const response = await fetch('http://127.0.0.1:8000/predict', {
+    const response = await fetch('/api/predict', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

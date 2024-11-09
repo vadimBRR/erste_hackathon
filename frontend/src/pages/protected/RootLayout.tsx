@@ -6,20 +6,20 @@ import { useAuth } from '../../providers/AuthProvider'
 import Navbar from '../../components/Navbar'
 
 const RootLayout = () => {
-  const { token } = useAuth();
+	// const { token } = useAuth()
 
-  if (!token) {
-    return <Navigate to="/sign-in" />;
-  }
-  return (
-    <div className="w-full ">
-      <Navbar/>
-      <section className="flex flex-1 h-full">
-        <Outlet/>
-      </section>
-      <Footer/>
-    </div>
-  )
+	// if (!token) {
+	// 	return <Navigate to='/sign-in' />
+	// }
+	return (
+		<div className='w-full '>
+			{/* <Navbar /> */}
+			<section className='flex flex-1 h-full'>
+				<Outlet />
+			</section>
+			{/* <Footer /> */}
+		</div>
+	)
 }
 
 export default RootLayout

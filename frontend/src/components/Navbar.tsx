@@ -12,6 +12,11 @@ const Navbar = () => {
       name: 'Home',
       link: '/'
     },
+    {
+      id: 2,
+      name: 'Receipts',
+      link: '/receipts',
+    }
     // {id: 2,
     //   name: 'Profiles',
     //   link: '/profiles',
@@ -33,7 +38,7 @@ const Navbar = () => {
           
         ))}
       </div>
-      <CustomButton handleClick={logout} text='Logout' buttonStyle='w-fit'/>
+      {/* <CustomButton handleClick={logout} text='Logout' buttonStyle='w-fit'/> */}
 
     </div>
   )

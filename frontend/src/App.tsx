@@ -5,18 +5,26 @@ import SignIn from './pages/auth/SignIn'
 import SignUp from './pages/auth/SignUp'
 import RootLayout from './pages/protected/RootLayout'
 import Home from './pages/protected/Home'
+import Receipts from './pages/protected/Receipts'
+import ReceiptsInfo from './pages/protected/ReceiptsInfo'
+import Analisis from './pages/protected/Analisis'
+import ReceiptsGeneralInfo from './pages/protected/ReceiptsGeneralInfo'
 
 function App() {
 	return (
 		<div className='flex h-screen'>
 			<Routes>
-				<Route element={<AuthLayout />}>
+				{/* <Route element={<AuthLayout />}>
 					<Route path='/sign-in' element={<SignIn />} />
 					<Route path='/sign-up' element={<SignUp />} />
-				</Route>
+				</Route> */}
 
 				<Route element={<RootLayout />}>
 					<Route path='/' element={<Home />} />
+					<Route path='/receipts' element={<Receipts />} />
+					<Route path='/receipts/:id' element={<ReceiptsInfo />} />
+					<Route path='/analysis' element={<Analisis />} />
+					<Route path='/receipts-gen/:id' element={<ReceiptsGeneralInfo />} />
 				</Route>
 			</Routes>
 		</div>

@@ -1,8 +1,11 @@
-bcrypt
-cryptography
 fastapi
+uvicorn
+SQLAlchemy
+pydantic
+passlib
 python-jose
 python-multipart
-SQLAlchemy
-uvicorn
-passlib
+bcrypt  
+cryptography
+joblib
+numpy

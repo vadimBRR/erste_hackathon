@@ -11,6 +11,7 @@ import models
 from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import numpy as np
+import pandas as pd
 
 app = FastAPI()
 
@@ -31,6 +32,8 @@ origins = [
   "http://localhost:8080",
   "http://localhost:3000",
   "http://localhost:5173",
+  "http://172.24.160.1:5173/"
+  "127.0.0.1:58781"
 ]
 
 app.add_middleware(
@@ -186,4 +189,22 @@ async def predict(request: PredictionRequest):
         return PredictionResponse(predicted_total_price=predicted_total_price)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
+      
 
+@app.post("/upload-and-merge")
+async def upload_and_merge():
+  
+    df1 = pd.read_csv('./datasets/EcologyOrganizations.csv')
+    df2 = pd.read_csv('./datasets/Organizations.csv', names=["id", "name"])
+    
+    print(df1.head())
+    print(df2.head())
+
+    df1["Organization Name"] = df1["Organization Name"].astype(str)
+    df2["id"] = df2["id"].astype(str)
+    
+    merged_df = pd.merge(df1, df2, left_on="Organization Name", right_on="id")
+    
+    result = merged_df.to_dict(orient="records")
+    print(result)
+    return {"merged_data": result}
